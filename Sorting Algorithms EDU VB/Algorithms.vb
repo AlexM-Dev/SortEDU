@@ -1,5 +1,5 @@
-﻿Module Algorithms
-    Public Sub InsertionSort_1(ByRef arr As Integer())
+﻿Public Module Algorithms
+    Public Sub InsertionSort(ByRef arr As Integer())
         For i = 1 To arr.Length - 1
             Dim j As Integer = i
             While (j > 0 & arr(j - 1) > arr(j))

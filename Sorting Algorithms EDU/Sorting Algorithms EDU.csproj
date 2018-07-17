@@ -49,5 +49,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sorting Algorithms EDU VB\Sorting Algorithms EDU VB.vbproj">
+      <Project>{adb7e7ea-668f-42c7-a318-fa2b157fdb42}</Project>
+      <Name>Sorting Algorithms EDU VB</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

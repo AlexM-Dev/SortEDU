@@ -2,14 +2,13 @@
 Module Program
 
     Sub Main()
-        Dim vals As Integer() = {1, 10, 7, 2, 5, 8}
+        Dim vals As Integer() = generateValues(50000)
 
         Console.WriteLine(String.Join(", ", vals))
-
         Dim timer As New Stopwatch()
         timer.Start()
 
-        InsertionSort_1(vals)
+        InsertionSort(vals)
 
         timer.Stop()
 
@@ -19,4 +18,14 @@ Module Program
         Console.ReadKey()
     End Sub
 
+    Function generateValues(ByVal length As Integer) As Integer()
+        Dim vals(length) As Integer
+        Dim random As New Random
+
+        For i = 0 To length - 1
+            vals(i) = random.Next(length)
+        Next
+
+        Return vals
+    End Function
 End Module
