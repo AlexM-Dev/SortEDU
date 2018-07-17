@@ -15,8 +15,8 @@ namespace Sorting_Algorithms_EDU {
             Stopwatch timer = new Stopwatch();
             timer.Start();
 
-            Sorting_Algorithms_EDU_VB.Algorithms.InsertionSort(ref vals);
-            //Algorithms.InsertionSort(ref vals);
+            //Sorting_Algorithms_EDU_VB.Algorithms.InsertionSort(ref vals);
+            Sorting_Algorithms_EDU.Algorithms.InsertionSort(ref vals);
 
             timer.Stop();
 
