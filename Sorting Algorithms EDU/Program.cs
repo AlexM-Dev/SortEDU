@@ -16,7 +16,7 @@ namespace Sorting_Algorithms_EDU {
             timer.Start();
 
             //Sorting_Algorithms_EDU_VB.Algorithms.InsertionSort(ref vals);
-            Sorting_Algorithms_EDU.Algorithms.InsertionSort(ref vals);
+            Sorting_Algorithms_EDU_VB.Algorithms.InsertionSort(ref vals);
 
             timer.Stop();
 
