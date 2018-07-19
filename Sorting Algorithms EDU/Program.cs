@@ -9,21 +9,34 @@ using Sorting;
 namespace Sorting_Algorithms_EDU {
     static class Program {
         static void Main(string[] args) {
-            int[] vals = Helpers.GenerateValues(50000);
+            string ln = new string('=', 10);
+            for (int i = 0; i < 50; i++) {
+                int[] select = Helpers.GenerateValues(50000);
+                int[] insert = (int[])select.Clone();
 
-            Console.WriteLine(string.Join(", ", vals));
+                Console.WriteLine($"{ln} Generated values for {i} {ln}");
 
+                long selection = 
+                    timeMethod(() => SortingAlgorithms.SelectionSort(ref select));
+                Console.WriteLine($"Selection sort took {selection}ms.");
+
+                long insertion =
+                    timeMethod(() => SortingAlgorithms.InsertionSort(ref insert));
+                Console.WriteLine($"Insertion sort took {insertion}ms.");
+            }
+
+            Console.ReadKey();
+        }
+
+        static long timeMethod(Action a) {
             Stopwatch timer = new Stopwatch();
             timer.Start();
 
-            SortingAlgorithms.InsertionSort(ref vals);
+            a.Invoke();
 
             timer.Stop();
 
-            Console.WriteLine(string.Join(", ", vals));
-            Console.WriteLine($"Took {timer.ElapsedMilliseconds} milliseconds.");
-
-            Console.ReadKey();
+            return timer.ElapsedMilliseconds;
         }
     }
 }
