@@ -1,5 +1,6 @@
 # SortEDU
 Because the public education system hates my ass, I have to do sorting algorithms. Yay. C# &amp; VB.
+**Spoilers: QuickSort is amazing!**
 
 ## How to use?
 I've really only got the base Module that's worth using. The two Program classes (cs/vb) are just personal tests.
