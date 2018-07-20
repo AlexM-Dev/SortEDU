@@ -10,5 +10,14 @@
 
             Return vals
         End Function
+        Public Function TimeMethod(ByVal a As Action) As Long
+            Dim timer As New Stopwatch
+            timer.Start()
+
+            a.Invoke()
+
+            timer.Stop()
+            Return timer.ElapsedMilliseconds
+        End Function
     End Module
 End Namespace
