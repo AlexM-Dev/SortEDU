@@ -10,18 +10,15 @@ Module Program
         Dim arr As String() = RandomStringArray(80000)
         Dim src As String = arr(rnd.Next(arr.Length))
 
-        Console.WriteLine("Sorting")
-        Dim l As Long = TimeMethod(Sub() Array.Sort(arr, StringComparer.InvariantCulture))
-        Console.WriteLine("Sorting took " + l.ToString() + "ms.")
-
         Dim i As Integer
-        l = TimeMethod(Sub() i = Search(arr, src))
 
-        Console.WriteLine(arr(i) + $", binary search took {l}ms.")
+        Dim sort = TimeMethod(Sub() Array.Sort(arr, StringComparer.InvariantCulture))
+        Dim binary = TimeMethod(Sub() i = Search(arr, src))
+        Dim linear = TimeMethod(Sub() i = LinearSearch(arr, src))
 
-        l = TimeMethod(Sub() i = LinearSearch(arr, src))
-
-        Console.WriteLine(arr(i) + $", linear search took {l}ms.")
+        Console.WriteLine("Sorting took " + sort.ToString() + "ms.")
+        Console.WriteLine(arr(i) + $", binary search took {binary}ms.")
+        Console.WriteLine(arr(i) + $", linear search took {linear}ms.")
 
         Console.ReadKey()
     End Sub
