@@ -1,5 +1,25 @@
 ﻿Namespace Global.Sorting
     Public Module SortingAlgorithms
+        Public Sub BubbleSort(ByRef arr As Integer())
+            If (arr.Length = 1) Then Return
+            Dim n As Integer = arr.Length
+            For i As Integer = 0 To n - 2
+                Dim swapped As Boolean = False
+
+                For j = 0 To n - 2
+                    If (arr(j) > arr(j + 1)) Then
+                        Dim v As Integer = arr(j)
+                        arr(j) = arr(j + 1)
+                        arr(j + 1) = v
+                        swapped = True
+                    End If
+                Next
+
+                If Not swapped Then
+                    Exit For
+                End If
+            Next
+        End Sub
         Public Sub InsertionSort(ByRef arr As Integer())
             For i As Integer = 1 To arr.Length - 1
                 Dim j As Integer = i

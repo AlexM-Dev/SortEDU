@@ -10,7 +10,7 @@ namespace Sorting_Algorithms_EDU {
     static class Program {
         static void Main(string[] args) {
             List<string> headers = new List<string>() {
-                "#", "Selection", "Insertion", "Quicksort", "OrderBy"
+                "#", "Selection", "Insertion", "Bubble Sort", "Quicksort", "OrderBy"
             };
             var rows = new List<List<string>>();
 
@@ -24,19 +24,21 @@ namespace Sorting_Algorithms_EDU {
             for (int i = 0; i < amount.Count; i++) {
                 List<string> e = new List<string>();
 
-                int[] select = GenerateValues(amount[i]);
+                int[] select = GenerateValues(amount[i] - 1);
                 int[] insert = (int[])select.Clone();
-                int[] quick = (int[])insert.Clone();
+                int[] bubble = (int[])insert.Clone();
+                int[] quick = (int[])bubble.Clone();
                 int[] orderBy = (int[])quick.Clone();
 
                 long selection = TimeMethod(() => SortingAlgorithms.SelectionSort(ref select));
                 long insertion = TimeMethod(() => SortingAlgorithms.InsertionSort(ref insert));
+                long bubblesort = TimeMethod(() => SortingAlgorithms.BubbleSort(ref bubble));
                 long quicksort = TimeMethod(() => SortingAlgorithms.Quicksort(ref quick));
                 long ordersort = TimeMethod(() => orderBy = orderBy.OrderBy(x => x).ToArray());
-
                 e.AddRange(new[] { $"{amount[i]} items",
                                    $"{selection}ms",
                                    $"{insertion}ms",
+                                   $"{bubblesort}ms",
                                    $"{quicksort}ms",
                                    $"{ordersort}ms"});
 

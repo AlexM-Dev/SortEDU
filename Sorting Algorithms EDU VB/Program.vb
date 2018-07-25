@@ -3,18 +3,13 @@ Imports Sorting
 Module Program
 
     Sub Main()
-        Dim vals As Integer() = generateValues(50000)
+        '' Reserve VB code for Searching.
+        Dim arr As String() = {"Dog", "Apple", "Cat"}
 
-        Console.WriteLine(String.Join(", ", vals))
-        Dim timer As New Stopwatch()
-        timer.Start()
+        Dim s As String = arr(Search(arr, "Dog"))
+        Console.WriteLine(s)
 
-        InsertionSort(vals)
 
-        timer.Stop()
-
-        Console.WriteLine(String.Join(", ", vals))
-        Console.WriteLine($"Took {timer.ElapsedMilliseconds} milliseconds.")
 
         Console.ReadKey()
     End Sub
