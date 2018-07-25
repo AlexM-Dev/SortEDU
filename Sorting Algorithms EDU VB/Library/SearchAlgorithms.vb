@@ -1,9 +1,8 @@
 ﻿Namespace Global.Sorting
     Public Module SearchAlgorithms
 
-        Public Function Search(ByVal arr As String(), ByVal value As String) As Integer
-            Array.Sort(arr, StringComparer.InvariantCulture)
-
+        Public Function Search(ByVal arr As String(),
+                               ByVal value As String) As Integer
             Dim left = 0
             Dim right = arr.Length - 1
             While (left <= right)
@@ -16,6 +15,18 @@
                     Return m
                 End If
             End While
+
+            Return -1
+        End Function
+
+        Public Function LinearSearch(ByVal arr As String(),
+                                     ByVal value As String) As Integer
+            '' Don't need to sort the array.
+            For i = 0 To arr.Length - 1
+                If (arr(i).CompareTo(value) = 0) Then
+                    Return i
+                End If
+            Next
 
             Return -1
         End Function
