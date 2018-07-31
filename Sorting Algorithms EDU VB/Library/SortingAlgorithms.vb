@@ -66,6 +66,7 @@
                 Quicksort(arr, p + 1, upper)
             End If
         End Sub
+
         Private Function Partition(ByRef arr As Integer(),
                                    ByVal lower As Integer,
                                    ByVal upper As Integer) As Integer

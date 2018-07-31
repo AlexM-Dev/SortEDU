@@ -71,6 +71,7 @@
     <Compile Include="Library\SearchAlgorithms.vb" />
     <Compile Include="Library\SortingAlgorithms.vb" />
     <Compile Include="Library\Helpers.vb" />
+    <Compile Include="Library\Table.vb" />
     <Compile Include="Program.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">

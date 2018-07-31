@@ -20,7 +20,7 @@ namespace Sorting_Algorithms_EDU {
                 500000, 1000000, 2000000, 5000000
             };
 
-            drawTable(headers, rows, 15);
+            Table.DrawTable(headers, rows, 15);
             for (int i = 0; i < amount.Count; i++) {
                 List<string> e = new List<string>();
 
@@ -45,44 +45,10 @@ namespace Sorting_Algorithms_EDU {
                 rows.Add(e);
 
                 Console.SetCursorPosition(0, 0);
-                drawTable(headers, rows, 15);
+                Table.DrawTable(headers, rows, 15);
             }
 
             Console.ReadKey();
-        }
-
-        static void drawTable(List<string> headers, List<List<string>> rows,
-            int colWidth = 20, int buff = 2) {
-            string buffer = new string(' ', buff);
-            Console.WriteLine();
-            for (int i = 0; i < headers.Count; i++) {
-                string lim = limit(headers[i], colWidth - buff);
-
-                Console.Write(buffer + lim +
-                    new string(' ', colWidth - lim.Length));
-            }
-            Console.WriteLine();
-            Console.WriteLine("\n" +
-                new string('-', headers.Count * colWidth + buff * headers.Count) + "\n");
-
-            foreach (var row in rows) {
-                foreach (var entry in row) {
-                    string lim = limit(entry, colWidth - buff);
-
-                    Console.Write(buffer + lim +
-                        new string(' ', colWidth - lim.Length));
-                }
-                Console.WriteLine();
-            }
-        }
-
-        static string limit(string value, int len) {
-            if (value.Length <= len)
-                return value;
-
-            string append = new string('.', len > 3 ? 3 : 0);
-
-            return value.Remove(len - append.Length) + append;
         }
     }
 }

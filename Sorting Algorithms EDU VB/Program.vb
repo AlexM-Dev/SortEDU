@@ -6,19 +6,46 @@ Module Program
     Dim rnd As New Random()
 
     Sub Main()
-        '' Reserve VB code for Searching.
-        Dim arr As String() = RandomStringArray(80000)
-        Dim src As String = arr(rnd.Next(arr.Length))
-
-        Dim i As Integer
-
-        Dim sort = TimeMethod(Sub() Array.Sort(arr, StringComparer.InvariantCulture))
-        Dim binary = TimeMethod(Sub() i = Search(arr, src))
-        Dim linear = TimeMethod(Sub() i = LinearSearch(arr, src))
+        '' Sort the dictionary and filter out ugly things.
+        Dim arr As String() = RandomStringArray(5000000, 5)
+        'For i = 0 To arr.Length - 1
+        '    arr(i) = arr(i).ToLower().Replace("'", "")
+        'Next
+        Dim sort = TimeMethod(Sub() Array.Sort(arr,
+                        StringComparer.InvariantCultureIgnoreCase))
 
         Console.WriteLine("Sorting took " + sort.ToString() + "ms.")
-        Console.WriteLine(arr(i) + $", binary search took {binary}ms.")
-        Console.WriteLine(arr(i) + $", linear search took {linear}ms.")
+
+        Dim headers = New List(Of String) From {
+            "#", "Index", "BinarySearch()", "Binary", "Linear"
+        }
+        Dim rows As New List(Of List(Of String))
+
+        Dim amount = New List(Of Integer) From {
+            1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000,
+            10000, 20000, 50000, 100000, 200000, 500000, 1000000,
+            2000000, 5000000
+        }
+
+        DrawTable(headers, rows, 20, 2)
+        For i As Integer = 0 To amount.Count - 1
+            Dim index = -1
+            Dim iArr() As String = arr.Take(amount(i)).ToArray()
+
+            Dim src As String = iArr(rnd.Next(iArr.Length))
+
+            Dim row = New List(Of String)
+
+            Dim defBinary = TimeMethod(Sub() index = Array.BinarySearch(arr, src))
+            Dim binary = TimeMethod(Sub() index = Search(arr, src))
+            Dim linear = TimeMethod(Sub() index = LinearSearch(arr, src))
+
+            row.AddRange({amount(i), src, defBinary, binary, linear})
+            rows.Add(row)
+
+            Console.SetCursorPosition(0, 1)
+            DrawTable(headers, rows, 20, 2)
+        Next
 
         Console.ReadKey()
     End Sub
